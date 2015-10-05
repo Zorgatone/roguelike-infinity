@@ -1,0 +1,25 @@
+{
+  "name": "roguelike-infinity",
+  "version": "1.0.0",
+  "homepage": "https://github.com/Zorgatone/roguelike-infinity",
+  "authors": [
+    "Zorgatone <zorgatone@gmail.com>"
+  ],
+  "description": "Just a Roguelike in Typescript",
+  "main": "",
+  "moduleType": [],
+  "keywords": [
+    "rogue",
+    "roguelike",
+    "typescript"
+  ],
+  "license": "GPL-2.0",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "www/lib",
+    "test",
+    "tests"
+  ]
+}
