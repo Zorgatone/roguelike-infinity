@@ -1,8 +1,8 @@
 {
   "name": "roguelike-infinity",
-  "version": "1.0.0",
+  "version": "0.0.1",
   "description": "Just a Roguelike in Typescript",
-  "main": "",
+  "main": "www/scripts/bundle.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -16,9 +16,22 @@
     "typescript"
   ],
   "author": "Zorgatone <zorgatone@gmail.com>",
-  "license": "GPL-2.0",
+  "license": "LGPL-3.0",
   "bugs": {
     "url": "https://github.com/Zorgatone/roguelike-infinity/issues"
   },
-  "homepage": "https://github.com/Zorgatone/roguelike-infinity#readme"
+  "homepage": "https://github.com/Zorgatone/roguelike-infinity#readme",
+  "devDependencies": {
+    "babel": "^6.5.2",
+    "babel-core": "^6.20.0",
+    "babel-polyfill": "^6.20.0",
+    "babel-preset-es2015": "^6.18.0",
+    "babel-preset-es2016": "^6.16.0",
+    "gulp": "^3.9.1"
+  },
+  "babel": {
+    "presets": [
+      "es2015"
+    ]
+  }
 }
