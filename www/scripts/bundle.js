@@ -6,18 +6,37 @@ var _document = document,
 
 var canvas = getCanvas();
 window.addEventListener("resize", function (event) {
-    if (event.isTrusted) {
-        adjustCanvas(canvas);
+    if (!event.isTrusted) {
+        return;
     }
+    adjustCanvas(canvas);
 }, true);
 adjustCanvas(canvas);
 var ctx = canvas.getContext("2d");
 function paint() {
-    if (ctx !== null) {
-        ctx.fillStyle = "black";
-        ctx.fillRect(0, 0, canvas.width, canvas.height);
+    if (ctx === null) {
+        return;
     }
+    var tileSize = 32;
+    var box = getBoxSize(canvas, tileSize);
+    ctx.fillStyle = "#000000";
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+    ctx.strokeStyle = "#FFFFFF";
+    ctx.lineWidth = 1;
+    ctx.strokeRect(box.x, box.y, box.width, box.height);
     window.requestAnimationFrame(paint);
+}
+function getBoxSize(canvas, tileSize) {
+    var offset = {
+        width: canvas.width % tileSize,
+        height: canvas.height % tileSize
+    };
+    return {
+        x: Math.ceil(offset.width / 2),
+        y: Math.ceil(offset.height / 2),
+        width: canvas.width - offset.width,
+        height: canvas.height - offset.height
+    };
 }
 paint();
 function adjustCanvas(canvas) {
