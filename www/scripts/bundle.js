@@ -13,6 +13,10 @@ window.addEventListener("resize", function (event) {
 }, true);
 adjustCanvas(canvas);
 var ctx = canvas.getContext("2d");
+if (null === ctx) {
+    throw new Error("Cannot get 2D canvas context");
+}
+paint();
 function paint() {
     if (ctx === null) {
         return;
@@ -23,26 +27,35 @@ function paint() {
     ctx.fillRect(0, 0, canvas.width, canvas.height);
     ctx.strokeStyle = "#FFFFFF";
     ctx.lineWidth = 1;
-    ctx.strokeRect(box.x, box.y, box.width, box.height);
+    // ctx.beginPath();
+    // ctx.moveTo(box.x + 0.5, box.y + 0.5);
+    // ctx.lineTo(box.x + box.width + 0.5, box.y + 0.5);
+    // ctx.lineTo(box.x + box.width + 0.5, box.y + box.height + 0.5);
+    // ctx.lineTo(box.x + 0.5, box.y + box.height + 0.5);
+    // ctx.lineTo(box.x + 0.5, box.y + 0.5);
+    // ctx.closePath();
+    // ctx.stroke();
+    ctx.strokeRect(box.x + 0.5, box.y + 0.5, box.width, box.height);
     window.requestAnimationFrame(paint);
 }
 function getBoxSize(canvas, tileSize) {
+    var factor = 6 * devicePixelRatio;
+    var box = {
+        width: Math.ceil(canvas.width - factor),
+        height: Math.ceil(canvas.height - factor)
+    };
     var offset = {
-        width: canvas.width % tileSize,
-        height: canvas.height % tileSize
+        width: Math.ceil(box.width % tileSize),
+        height: Math.ceil(box.height % tileSize)
     };
     return {
-        x: Math.ceil(offset.width / 2),
-        y: Math.ceil(offset.height / 2),
-        width: canvas.width - offset.width,
-        height: canvas.height - offset.height
+        x: Math.ceil(factor / 2) + Math.ceil(offset.width / 2),
+        y: Math.ceil(factor / 2) + Math.ceil(offset.height / 2),
+        width: Math.ceil(box.width - offset.width),
+        height: Math.ceil(box.height - offset.height)
     };
 }
-paint();
 function adjustCanvas(canvas) {
-    var _window = window,
-        devicePixelRatio = _window.devicePixelRatio;
-
     Object.assign(canvas, {
         width: body.offsetWidth * devicePixelRatio,
         height: body.offsetHeight * devicePixelRatio
