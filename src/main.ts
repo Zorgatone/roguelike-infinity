@@ -24,7 +24,7 @@ function paint() {
     return;
   }
 
-  const tileSize = 32;
+  const tileSize = 32 * devicePixelRatio;
   const box = getBoxSize(canvas, tileSize);
 
   ctx.fillStyle = "#000000";
