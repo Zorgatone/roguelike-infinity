@@ -33,6 +33,7 @@
     "gulp": "latest",
     "gulp-server-livereload": "^1.9.2",
     "prettysize": "0.0.3",
+    "punycode": "^2.0.1",
     "tsify": "latest",
     "typescript": "latest",
     "typings": "^2.0.0",

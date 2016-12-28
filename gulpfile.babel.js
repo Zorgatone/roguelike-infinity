@@ -5,6 +5,7 @@ import { build, serve } from "./gulp-tasks";
 
 const config = {
   entries: [
+    "./src/declarations.d.ts",
     "./src/main.ts"
   ],
   output: "bundle.js",

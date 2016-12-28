@@ -1,7 +1,7 @@
-www/**/.*
 node_modules
 bower_components
 www/lib
+www/scripts
 test
 tests
 

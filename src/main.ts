@@ -1,3 +1,12 @@
+import * as punycode from "punycode";
+//window.punycode = punycode;
+
+import Char from "./Char";
+
+let ch = new Char("𝌆");
+
+console.log(ch, ch.isASCII());
+
 const {body} = document;
 const canvas = getCanvas();
 
