@@ -19,18 +19,19 @@ export default class Screen {
     this._document = element.ownerDocument;
     this._window = this._document.defaultView || (<any>this._document).parentWindow
     this._devicePixelRatio = this._window.devicePixelRatio;
-    this._body = (<HTMLBodyElement>this._document.body);
-
-    if (this._body.contains(element)) {
-      this._parent = (<HTMLElement>element.parentNode);
-    } else {
-      this._parent = this._body;
-    }
+    this._body = <HTMLBodyElement> this._document.body;
 
     if (element instanceof HTMLCanvasElement) {
+      this._parent = <HTMLElement> element.parentNode;
       this._canvas = element;
     } else {
-      this._canvas = <HTMLCanvasElement>document.createElement("canvas");
+      if (this._body.contains(element)) {
+        this._parent = element;
+      } else {
+        this._parent = this._body;
+      }
+
+      this._canvas = <HTMLCanvasElement> document.createElement("canvas");
       this._canvas.style.width = "100%";
       this._canvas.style.height = "100%";
       this._canvas.innerHTML = "Your browser does not support HTML5 Canvas";
