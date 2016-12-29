@@ -1,14 +1,11 @@
-import * as punycode from "punycode";
-//window.punycode = punycode;
-
-import Char from "./Char";
-
-let ch = new Char("𝌆");
-
-console.log(ch, ch.isASCII());
+import Screen from "./Screen";
 
 const {body} = document;
 const canvas = getCanvas();
+
+//const screen = Screen.getInstance(canvas);
+
+//console.log(screen);
 
 window.addEventListener("resize", event => {
   if(!event.isTrusted) {
@@ -62,7 +59,7 @@ function getBoxSize(canvas: HTMLCanvasElement, tileSize: number): {
   width: number;
   height: number;
 } {
-  const factor = 6 * devicePixelRatio;
+  const factor = 8 * devicePixelRatio;
 
   const box = {
     width: Math.ceil(canvas.width - factor),
